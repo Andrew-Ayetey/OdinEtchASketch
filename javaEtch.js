@@ -17,5 +17,14 @@ let makeDivs = function(number){
         etchBox.style.gridTemplateRows += " 1fr"
     }
 }
+let blockDivs = document.getElementsByClassName("etchBlock")
 
-makeDivs(50)
+
+
+
+makeDivs(16)
+console.log(blockDivs)
+
+blockDivs.addEventListener(onmouseover, (e) => {
+    console.log(e)
+})
