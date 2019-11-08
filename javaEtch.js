@@ -2,6 +2,8 @@ let createDiv = function(){
     let etchDiv = document.createElement('div')
     let etchBox = document.getElementById('Etch-a-Sketch')
     etchDiv.classList.add("etchBlock")
+    etchDiv.style.background = 'rgba(0,0,0)'
+    etchDiv.style.opacity = '0'
     etchBox.appendChild(etchDiv)
 
 }
@@ -17,14 +19,26 @@ let makeDivs = function(number){
         etchBox.style.gridTemplateRows += " 1fr"
     }
 }
-let blockDivs = document.getElementsByClassName("etchBlock")
+
 
 
 
 
 makeDivs(16)
-console.log(blockDivs)
+let blockDivsNode = document.querySelectorAll(".etchBlock")
+let blockDivsArray = Array.from(blockDivsNode)
 
-blockDivs.addEventListener(onmouseover, (e) => {
-    console.log(e)
-})
+for(const block of blockDivsArray){
+        block.addEventListener('mouseover', e => {
+            opacity = Number(block.style.opacity)
+            console.log(typeof opacity)
+            if(opacity <= 1){
+                opacity += .3}
+            else{}
+            block.style.opacity = String(opacity)
+
+
+        }
+        )
+    
+}
