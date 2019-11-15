@@ -2,10 +2,13 @@
 let createDiv = function(){
     let etchDiv = document.createElement('div')
     let etchBox = document.getElementById('Etch-a-Sketch')
+    // console.log(typeof etchBox.firstChild)
     etchDiv.classList.add("etchBlock")
     etchDiv.style.background = 'rgba(0,0,0)'
     etchDiv.style.opacity = '0'
     etchBox.appendChild(etchDiv)
+    console.log(typeof etchBox.firstChild)
+    return
 
 }
 
@@ -35,8 +38,11 @@ let blockLength = blockDivsArray.length
 
 let clearDivs = function(){
     let etchBox = document.getElementById('Etch-a-Sketch')
-    for(let i = 0; i <= blockLength; i++){
-            etchBox.removeChild(etchBox.firstChild)
+    console.log(blockLength)
+    for(let i = 0; i < blockLength; i++){
+            let firstKid = etchBox.firstChild
+            console.log(typeof firstKid)
+            etchBox.removeChild(firstKid)
     }
     
     etchBox.style.gridTemplateColumns = ""
@@ -62,19 +68,16 @@ resetButton.addEventListener('click', e => {
     let resetDivFunction = function(){
         let resetDivs = prompt("Please enter a new number between 2 and 100", "")
         if(Number(resetDivs) >= 2 || Number(resetDivs) >= 100){
-            console.log(etchBox.firstChild)
             clearDivs()
             makeDivs((Number(resetDivs)))
             blockDivsNode = document.querySelectorAll(".etchBlock")
             blockDivsArray = Array.from(blockDivsNode)
             blockLength = blockDivsArray.length
-            console.log(blockLength)
             addEtchEvent()
         }
         else{resetDivFunction()}   
     }
     resetDivFunction()
-    console.log(blockDivsArray)
 
     })
 
